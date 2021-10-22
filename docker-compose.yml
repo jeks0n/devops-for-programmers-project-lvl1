@@ -1,0 +1,14 @@
+version:  '3.9'
+
+services:
+  app:
+    container_name: hexlet-app
+    build:
+      dockerfile: Dockerfile.production
+      context: app
+    command: npm test
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./app/:/app

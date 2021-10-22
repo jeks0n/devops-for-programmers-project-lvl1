@@ -1,0 +1,9 @@
+version:  '3.9'
+
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+    command: make start
+    ports:
+      - 8080:8080

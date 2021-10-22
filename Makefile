@@ -1,17 +1,5 @@
-setup:
-	npm ci
+test:
+	docker-compose -f docker-compose.yml up --abort-on-container-exit
 
 start:
-	npm start
-
-dev:
-	npm run dev
-
-lint:
-	npx eslint .
-
-test:
-	npm test
-
-heroku-logs:
-	heroku logs --tail
+	docker-compose -f docker-compose.yml -f docker-compose.override.yml up --build
