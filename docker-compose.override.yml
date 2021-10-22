@@ -5,5 +5,7 @@ services:
     build:
       dockerfile: Dockerfile
     command: make start
+    volumes:
+      - ./app/:/app
     ports:
       - 8080:8080
