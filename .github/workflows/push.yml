@@ -51,11 +51,11 @@ jobs:
           images: |
             jeks0n/devops-for-programmers-project-lvl1
           tags: |
-            type=semver,pattern={{version}}
-#            type=ref,event=branch
-#            type=ref,event=pr
 #            type=semver,pattern={{version}}
-#            type=sha
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=sha
 
       - name: Set up Docker Buildx
         id: buildx
