@@ -24,7 +24,7 @@ jobs:
 
       - name: Make build and push
         id: docker_build_test
-        users: docker/build-push-action@v2
+        uses: docker/build-push-action@v2
         with:
           context: ./app
           file: Dockerfile.production
@@ -64,7 +64,7 @@ jobs:
 
       - name: Make build and push
         id: docker_build
-        users: docker/build-push-action@v2
+        uses: docker/build-push-action@v2
         with:
           context: ./app
           file: Dockerfile.production
