@@ -22,9 +22,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-#      - name: Make test
-#        run: ls ./app -la
-
       - name: Make build and push
         id: docker_build_test
         uses: docker/build-push-action@v2
@@ -36,9 +33,9 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
           tags: ${{ github.repository }}:latest
-#
-#      - name: Make test
-#        run: make ci
+
+      - name: Make test
+        run: make ci
 #  docker:
 #    needs: test
 #    name: Docker build and push
