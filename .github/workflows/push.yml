@@ -51,7 +51,7 @@ jobs:
           images: |
             jeks0n/devops-for-programmers-project-lvl1
           tags: |
-            type=semver,pattern={{version}},value=v1.0.0
+            type=semver,pattern={{version}},value=v1.0.1
 
       - name: Set up Docker Buildx
         id: buildx
@@ -82,5 +82,5 @@ jobs:
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
 #          tags: ${{ github.repository }}:latest
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }},${{ github.repository }}:latest
           labels: ${{ steps.meta.outputs.labels }}
