@@ -51,7 +51,6 @@ jobs:
           images: |
             jeks0n/devops-for-programmers-project-lvl1
           tags: |
-#            type=semver,pattern={{version}}
             type=ref,event=branch
             type=ref,event=pr
             type=semver,pattern={{version}}
