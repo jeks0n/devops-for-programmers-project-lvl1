@@ -49,7 +49,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            myorg/myrepository
+            jeks0n/devops-for-programmers-project-lvl1
           tags: |
             type=ref,event=branch
             type=ref,event=pr
