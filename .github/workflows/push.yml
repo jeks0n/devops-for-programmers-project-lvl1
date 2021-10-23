@@ -24,7 +24,6 @@ jobs:
 
       - name: Make test
         run: ls -la
-        run: ls -la
 
 #      - name: Make build and push
 #        id: docker_build_test
