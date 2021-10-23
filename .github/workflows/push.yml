@@ -23,7 +23,7 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Make test
-        run: pwd
+        run: ll
 
 #      - name: Make build and push
 #        id: docker_build_test
