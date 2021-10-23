@@ -23,7 +23,8 @@ jobs:
             ${{ runner.os }}-buildx-
 
       - name: Make test
-        run: ll
+        run: ls -la
+        run: ls -la
 
 #      - name: Make build and push
 #        id: docker_build_test
