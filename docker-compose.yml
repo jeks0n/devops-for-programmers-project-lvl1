@@ -3,7 +3,7 @@ version:  '3.9'
 services:
   app:
     image: jeks0n/devops-for-programmers-project-lvl1
-    container_name: hexlet-app
+    container_name: hexlet-app:1.0.0
     build:
       dockerfile: Dockerfile.production
       context: app
