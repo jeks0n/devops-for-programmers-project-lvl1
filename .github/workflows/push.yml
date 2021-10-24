@@ -54,7 +54,7 @@ jobs:
           images: |
             ${{ github.repository }}
           tags: |
-            type=semver,pattern={{version}}
+            type=pep440,pattern={{version}}
 
       - name: Set up Docker Buildx
         id: buildx
