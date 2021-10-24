@@ -7,11 +7,30 @@ Make autopublish to DockerHub repository on each push event via git actions.
 
 [DockerHub Repo](https://hub.docker.com/repository/docker/jeks0n/devops-for-programmers-project-lvl1)  
 
+### Requirements
+* Docker version 20.10.8^
+* Docker-compose version 1.29.2^
+* Make
+
 ### Commands
-    make test
-    make start
-    make build
-    make push
+Run test 
+
+`make test`
+
+Run app in dev mode
+
+`make start`
+
+Build production app image
+
+`make build`
+
+Push app to DockerHub
+
+`make push`
 
 ### Actions
     .github/workflows/
+
+### Url
+    https://localhost
