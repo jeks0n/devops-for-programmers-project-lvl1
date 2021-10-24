@@ -1,4 +1,4 @@
-name: CI to Docker Hub
+name: CI Status
 on:
   push:
     branches:
@@ -51,10 +51,6 @@ jobs:
         with:
           images: |
             ${{ github.repository }}
-          tags: |
-            type=sha
-          flavor: |
-            latest=auto
 
       - name: Set up Docker Buildx
         id: buildx
