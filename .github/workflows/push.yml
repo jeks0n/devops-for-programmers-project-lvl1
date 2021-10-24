@@ -1,7 +1,10 @@
 name: CI to Docker Hub
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+    tags:
+      - 'v*'
 jobs:
   test:
     name: Run Test
@@ -52,7 +55,6 @@ jobs:
             ${{ github.repository }}
           tags: |
             type=semver,pattern={{version}}
-
 
       - name: Set up Docker Buildx
         id: buildx
