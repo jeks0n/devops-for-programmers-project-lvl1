@@ -1,6 +1,14 @@
 version:  '3.9'
 
 services:
+  db:
+    container_name: hexlet-db
+    image: postgres:13.2-alpine
+    env_file: ./app/.env.example
+    restart: unless-stopped
+    volumes:
+      - postgress_volume:/var/lib/postgresql/data
+
   app:
     image: jeks0n/devops-for-programmers-project-lvl1
     container_name: hexlet-app
@@ -8,6 +16,10 @@ services:
       dockerfile: Dockerfile.production
       context: app
     command: npm test
+    env_file: ./app/.env.example
     restart: unless-stopped
     stdin_open: true
     tty: true
+
+volumes:
+  postgress_volume:
