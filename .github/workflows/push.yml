@@ -54,7 +54,7 @@ jobs:
           tags: |
             type=sha
           flavor:
-            latest=yes
+            latest=true
 
       - name: Set up Docker Buildx
         id: buildx
