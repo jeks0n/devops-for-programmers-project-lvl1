@@ -13,8 +13,5 @@ lint:
 test:
 	npm test
 
-dummy:
-	npm -v
-
 heroku-logs:
 	heroku logs --tail
