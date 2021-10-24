@@ -51,6 +51,10 @@ jobs:
         with:
           images: |
             ${{ github.repository }}
+          tags: |
+            type=sha
+          flavor:
+            latest=yes
 
       - name: Set up Docker Buildx
         id: buildx
