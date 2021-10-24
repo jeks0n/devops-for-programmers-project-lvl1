@@ -10,7 +10,7 @@ Make autopublish to DockerHub repository on each push event via git actions.
 ### Requirements
 * Docker version 20.10.8^
 * Docker-compose version 1.29.2^
-* Make
+* Make command
 
 ### Commands
 Run test 
