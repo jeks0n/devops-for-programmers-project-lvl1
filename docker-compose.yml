@@ -4,7 +4,7 @@ services:
   db:
     container_name: hexlet-db
     image: postgres:13.2-alpine
-    env_file: ./app/.env.example
+    env_file: ./app/.env
     restart: unless-stopped
     volumes:
       - postgress_volume:/var/lib/postgresql/data
@@ -16,9 +16,8 @@ services:
       dockerfile: Dockerfile.production
       context: .
     command: npm test
-    env_file: ./app/.env.example
+    env_file: ./app/.env
     restart: unless-stopped
-    stdin_open: true
     tty: true
 
 volumes:
