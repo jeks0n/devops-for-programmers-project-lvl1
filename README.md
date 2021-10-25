@@ -15,7 +15,7 @@ Make autopublish to DockerHub repository on each push event via git actions.
 ### Commands
 Run test
 
-`make prod`
+`make test`
 
 Run app in dev mode
 
