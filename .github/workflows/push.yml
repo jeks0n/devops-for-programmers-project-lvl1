@@ -74,7 +74,8 @@ jobs:
           tags: ${{ github.repository }}:latest
 
       - name: Make test
-        run: make test
+#        run: make test
+        run: docker-compose -f docker-compose.yml up --abort-on-container-exit
         env:
           directory: ${{ secrets.APP_DIRECTORY }}
           envkey_DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
