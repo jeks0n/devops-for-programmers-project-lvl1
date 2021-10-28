@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Create .env file
-        uses: SpicyPizza/create-envfile@v1
+        uses: SpicyPizza/create-envfile@v1.2
         directory: app
         with:
           envkey_DATABASE_HOST: env.DATABASE_HOST
@@ -27,7 +27,6 @@ jobs:
           envkey_DATABASE_NAME: env.DATABASE_NAME
           envkey_DATABASE_USERNAME: env.DATABASE_USERNAME
           envkey_DATABASE_PASSWORD: env.DATABASE_PASSWORD
-
           envkey_POSTGRES_USER: env.DATABASE_USERNAME
           envkey_POSTGRES_PASSWORD: env.DATABASE_PASSWORD
           envkey_POSTGRES_DB: env.DATABASE_HOST
