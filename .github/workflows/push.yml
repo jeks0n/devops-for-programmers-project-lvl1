@@ -22,15 +22,15 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.2
         with:
           directory: app
-          envkey_DATABASE_HOST: env.DATABASE_HOST
-          envkey_DATABASE_PORT: env.DATABASE_PORT
-          envkey_DATABASE_NAME: env.DATABASE_NAME
-          envkey_DATABASE_USERNAME: env.DATABASE_USERNAME
-          envkey_DATABASE_PASSWORD: env.DATABASE_PASSWORD
-          envkey_POSTGRES_USER: env.DATABASE_USERNAME
-          envkey_POSTGRES_PASSWORD: env.DATABASE_PASSWORD
-          envkey_POSTGRES_DB: env.DATABASE_HOST
-          envkey_POSTGRES_PORT: env.DATABASE_PORT
+          envkey_DATABASE_HOST: ${{ env.DATABASE_HOST }}
+          envkey_DATABASE_PORT: ${{ env.DATABASE_PORT }}
+          envkey_DATABASE_NAME: ${{ env.DATABASE_NAME }}
+          envkey_DATABASE_USERNAME: ${{ env.DATABASE_USERNAME }}
+          envkey_DATABASE_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          envkey_POSTGRES_USER: ${{ env.DATABASE_USERNAME }}
+          envkey_POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          envkey_POSTGRES_DB: ${{ env.DATABASE_HOST }}
+          envkey_POSTGRES_PORT: ${{ env.DATABASE_PORT }}
 
       - name: Set up Docker Buildx
         id: buildx_test
