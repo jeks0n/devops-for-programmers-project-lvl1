@@ -20,7 +20,7 @@ jobs:
 
       - name: Create .env file
         uses: SpicyPizza/create-envfile@v1
-        directory: ./app
+        directory: app
         with:
           envkey_DATABASE_HOST: env.DATABASE_HOST
           envkey_DATABASE_PORT: env.DATABASE_PORT
@@ -70,7 +70,7 @@ jobs:
 
       - name: Create .env file
         uses: SpicyPizza/create-envfile@v1
-        directory: ./app
+        directory: app
         with:
           envkey_DATABASE_HOST: env.DATABASE_HOST
           envkey_DATABASE_PORT: env.DATABASE_PORT
