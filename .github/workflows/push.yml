@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  APP_DIRECTORY: ${{ secrets.APP_DIRECTORY_NAME }}
+  APP_DIRECTORY: app
   DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
   DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
   DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
@@ -24,7 +24,7 @@ jobs:
       - name: Create .env file
         uses: SpicyPizza/create-envfile@v1.2
         env:
-          directory: ${{ env.APP_DIRECTORY }}
+          directory: app
           envkey_DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
           envkey_DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
           envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
@@ -54,7 +54,7 @@ jobs:
         id: docker_build_test
         uses: docker/build-push-action@v2
         env:
-          directory: ${{ env.APP_DIRECTORY }}
+          directory: ${{ secrets.APP_DIRECTORY }}
           envkey_DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
           envkey_DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
           envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
