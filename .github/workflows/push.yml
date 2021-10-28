@@ -7,6 +7,7 @@ jobs:
   test:
     name: Run Test
     runs-on: ubuntu-latest
+    environment: prod
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,6 +27,12 @@ jobs:
       - name: Make build and push
         id: docker_build_test
         uses: docker/build-push-action@v2
+        env:
+          DATABASE_HOST=db
+          DATABASE_PORT=5432
+          DATABASE_NAME=postgres
+          DATABASE_USERNAME=uswer
+          DATABASE_PASSWORD=123
         with:
           context: .
           file: Dockerfile.production
@@ -41,6 +48,7 @@ jobs:
     needs: test
     name: Docker build and push
     runs-on: ubuntu-latest
+    environment: prod
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
