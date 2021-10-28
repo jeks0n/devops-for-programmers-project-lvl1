@@ -14,12 +14,33 @@ on:
       - '**'
     tags:
       - '**'
+env:
+  APP_DIRECTORY: ${{ secrets.APP_DIRECTORY_NAME }}
+  DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+  DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+  DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+  DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
+      - name: Create .env file
+        uses: SpicyPizza/create-envfile@v1.2
+        with:
+          directory: ${{ env.APP_DIRECTORY }}
+          envkey_DATABASE_HOST: ${{ env.DATABASE_HOST }}
+          envkey_DATABASE_PORT: ${{ env.DATABASE_PORT }}
+          envkey_DATABASE_NAME: ${{ env.DATABASE_NAME }}
+          envkey_DATABASE_USERNAME: ${{ env.DATABASE_USERNAME }}
+          envkey_DATABASE_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          envkey_POSTGRES_USER: ${{ env.DATABASE_USERNAME }}
+          envkey_POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          envkey_POSTGRES_DB: ${{ env.DATABASE_HOST }}
+          envkey_POSTGRES_PORT: ${{ env.DATABASE_PORT }}
 
       - name: Hexlet project check
         uses: hexlet/project-action@release

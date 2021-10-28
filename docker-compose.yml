@@ -4,10 +4,6 @@ services:
   db:
     container_name: hexlet-db
     image: postgres:13.2-alpine
-#    environment:
-#      - POSTGRES_USER=uswer
-#      - POSTGRES_PASSWORD=123
-#      - POSTGRES_DB=db
     env_file: ./app/.env
     restart: unless-stopped
     volumes:
@@ -21,12 +17,6 @@ services:
       context: .
     env_file: ./app/.env
     command: npm test
-#    environment:
-#      - DATABASE_HOST=db
-#      - DATABASE_PORT=5432
-#      - DATABASE_NAME=postgres
-#      - DATABASE_USERNAME=uswer
-#      - DATABASE_PASSWORD=123
     restart: unless-stopped
     tty: true
 

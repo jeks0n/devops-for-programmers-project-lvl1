@@ -1,19 +1,22 @@
 name: CI Status
+
 on:
   push:
     branches:
       - main
+
 env:
-  DATABASE_HOST: db
-  DATABASE_PORT: 5432
-  DATABASE_NAME: postgres
-  DATABASE_USERNAME: uswer
-  DATABASE_PASSWORD: 123
+  APP_DIRECTORY: ${{ secrets.APP_DIRECTORY_NAME }}
+  DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+  DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+  DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+  DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+
 jobs:
   test:
     name: Run Test
     runs-on: ubuntu-latest
-    environment: prod
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,7 +24,7 @@ jobs:
       - name: Create .env file
         uses: SpicyPizza/create-envfile@v1.2
         with:
-          directory: app
+          directory: ${{ env.APP_DIRECTORY }}
           envkey_DATABASE_HOST: ${{ env.DATABASE_HOST }}
           envkey_DATABASE_PORT: ${{ env.DATABASE_PORT }}
           envkey_DATABASE_NAME: ${{ env.DATABASE_NAME }}
@@ -58,6 +61,7 @@ jobs:
 
       - name: Make test
         run: make test
+
   docker:
     needs: test
     name: Docker build and push
@@ -70,16 +74,16 @@ jobs:
       - name: Create .env file
         uses: SpicyPizza/create-envfile@v1.2
         with:
-          directory: app
-          envkey_DATABASE_HOST: env.DATABASE_HOST
-          envkey_DATABASE_PORT: env.DATABASE_PORT
-          envkey_DATABASE_NAME: env.DATABASE_NAME
-          envkey_DATABASE_USERNAME: env.DATABASE_USERNAME
-          envkey_DATABASE_PASSWORD: env.DATABASE_PASSWORD
-          envkey_POSTGRES_USER: env.DATABASE_USERNAME
-          envkey_POSTGRES_PASSWORD: env.DATABASE_PASSWORD
-          envkey_POSTGRES_DB: env.DATABASE_HOST
-          envkey_POSTGRES_PORT: env.DATABASE_PORT
+          directory: ${{ env.APP_DIRECTORY }}
+          envkey_DATABASE_HOST: ${{ env.DATABASE_HOST }}
+          envkey_DATABASE_PORT: ${{ env.DATABASE_PORT }}
+          envkey_DATABASE_NAME: ${{ env.DATABASE_NAME }}
+          envkey_DATABASE_USERNAME: ${{ env.DATABASE_USERNAME }}
+          envkey_DATABASE_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          envkey_POSTGRES_USER: ${{ env.DATABASE_USERNAME }}
+          envkey_POSTGRES_PASSWORD: ${{ env.DATABASE_PASSWORD }}
+          envkey_POSTGRES_DB: ${{ env.DATABASE_HOST }}
+          envkey_POSTGRES_PORT: ${{ env.DATABASE_PORT }}
 
       - name: Docker meta
         id: meta
