@@ -4,10 +4,11 @@ services:
   db:
     container_name: hexlet-db
     image: postgres:13.2-alpine
-    environment:
-      - POSTGRES_USER=uswer
-      - POSTGRES_PASSWORD=123
-      - POSTGRES_DB=db
+#    environment:
+#      - POSTGRES_USER=uswer
+#      - POSTGRES_PASSWORD=123
+#      - POSTGRES_DB=db
+    env_file: ./app/.env
     restart: unless-stopped
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -18,6 +19,7 @@ services:
     build:
       dockerfile: Dockerfile.production
       context: .
+    env_file: ./app/.env
     command: npm test
 #    environment:
 #      - DATABASE_HOST=db
