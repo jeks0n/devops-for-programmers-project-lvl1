@@ -28,7 +28,7 @@ jobs:
           DATABASE_HOST=${{ secrets.DATABASE_HOST }}
           DATABASE_PORT=${{ secrets.DATABASE_PORT }}
           DATABASE_NAME=${{ secrets.DATABASE_NAME }}
-          DATABASE_USERNAME=uswer
+          DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
           DATABASE_PASSWORD=123
 
           POSTGRES_USER=${DATABASE_USERNAME}
