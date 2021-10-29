@@ -5,14 +5,6 @@ on:
     branches:
       - main
 
-env:
-  APP_DIRECTORY: app
-  DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-  DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-  DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-  DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-  DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-
 jobs:
   test:
     name: Run Test
