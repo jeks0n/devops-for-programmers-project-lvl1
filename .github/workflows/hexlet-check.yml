@@ -25,7 +25,8 @@ jobs:
         run: |
           cd ${{ secrets.APP_DIRECTORY_NAME }}
           cat << EOF > .env
-          DATABASE_HOST=db
+          #DATABASE_HOST=db
+          DATABASE_HOST=${{ secrets.DATABASE_HOST }}
           DATABASE_PORT=5432
           DATABASE_NAME=postgres
           DATABASE_USERNAME=postgres
