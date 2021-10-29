@@ -35,7 +35,7 @@ jobs:
           POSTGRES_PASSWORD=${DATABASE_PASSWORD}
           POSTGRES_DB=${DATABASE_NAME}
           POSTGRES_HOST=${{ secrets.DATABASE_HOST }}
-          POSTGRES_PORT=${DATABASE_PORT}
+#          POSTGRES_PORT=${DATABASE_PORT}
           EOF
 
 #        env:
