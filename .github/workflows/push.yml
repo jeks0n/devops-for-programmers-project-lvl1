@@ -27,7 +27,7 @@ jobs:
           cat << EOF > .env
           DATABASE_HOST=${{ secrets.DATABASE_HOST }}
           DATABASE_PORT=${{ secrets.DATABASE_PORT }}
-          DATABASE_NAME=postgres
+          DATABASE_NAME=${{ secrets.DATABASE_NAME }}
           DATABASE_USERNAME=uswer
           DATABASE_PASSWORD=123
 
