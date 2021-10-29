@@ -4,7 +4,7 @@ services:
   app:
     build:
       dockerfile: Dockerfile
-    command: npm start
+    command: bash -c 'sleep 3 && npm start'
     volumes:
       - ./app/:/app
     ports:
