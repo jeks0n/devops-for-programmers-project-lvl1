@@ -23,8 +23,19 @@ jobs:
 
       - name: Create .env file
         run: |
-          cd app
-          echo ls -ls
+          cd ${{ env.APP_DIRECTORY }}
+          cat << EOF > .env
+          DATABASE_HOST=${{ secrets.DATABASE_HOST }}
+          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
+          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.DATABASE_HOST }}
+          POSTGRES_PORT: ${{ secrets.DATABASE_PORT }}
+          EOF
+
 #        env:
 #          directory: app
 #          envkey_DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
@@ -55,17 +66,17 @@ jobs:
       - name: Make build and push
         id: docker_build_test
         uses: docker/build-push-action@v2
-        env:
-          directory: ${{ secrets.APP_DIRECTORY }}
-          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
-          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_DB: ${{ secrets.DATABASE_HOST }}
-          POSTGRES_PORT: ${{ secrets.DATABASE_PORT }}
+#        env:
+#          directory: ${{ secrets.APP_DIRECTORY }}
+#          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+#          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+#          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+#          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+#          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+#          POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
+#          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+#          POSTGRES_DB: ${{ secrets.DATABASE_HOST }}
+#          POSTGRES_PORT: ${{ secrets.DATABASE_PORT }}
         with:
           context: .
           file: Dockerfile.production
@@ -76,19 +87,19 @@ jobs:
           tags: ${{ github.repository }}:latest
 
       - name: Make test
-#        run: make test
-        run: docker-compose -f docker-compose.yml up --abort-on-container-exit
-        env:
-          directory: ${{ secrets.APP_DIRECTORY }}
-          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
-          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_DB: ${{ secrets.DATABASE_HOST }}
-          POSTGRES_PORT: ${{ secrets.DATABASE_PORT }}
+        run: make test
+#        run: docker-compose -f docker-compose.yml up --abort-on-container-exit
+#        env:
+#          directory: ${{ secrets.APP_DIRECTORY }}
+#          DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+#          DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+#          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+#          DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
+#          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+#          POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
+#          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+#          POSTGRES_DB: ${{ secrets.DATABASE_HOST }}
+#          POSTGRES_PORT: ${{ secrets.DATABASE_PORT }}
 
   docker:
     needs: test
