@@ -25,15 +25,17 @@ jobs:
         run: |
           cd ${{ secrets.APP_DIRECTORY_NAME }}
           cat << EOF > .env
-          DATABASE_HOST=${{ secrets.DATABASE_HOST }}
-          DATABASE_PORT=${{ secrets.DATABASE_PORT }}
-          DATABASE_NAME=${{ secrets.DATABASE_NAME }}
-          DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
-          DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_USER=${{ secrets.DATABASE_USERNAME }}
-          POSTGRES_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
-          POSTGRES_DB=${{ secrets.DATABASE_NAME }}
-          POSTGRES_HOST=${{ secrets.DATABASE_HOST }}
+          DATABASE_HOST=db
+          DATABASE_PORT=5432
+          DATABASE_NAME=postgres
+          DATABASE_USERNAME=uswer
+          DATABASE_PASSWORD=123
+
+          POSTGRES_USER=uswer
+          POSTGRES_PASSWORD=123
+          POSTGRES_DB=postgres
+          POSTGRES_HOST=db
+          POSTGRES_PORT=5432
           EOF
 
       - name: Hexlet project check
