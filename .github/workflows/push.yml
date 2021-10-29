@@ -23,7 +23,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          cd ${{ env.APP_DIRECTORY }}
+          cd ${{ secrets.APP_DIRECTORY_NAME }}
           cat << EOF > .env
           DATABASE_HOST=${{ secrets.DATABASE_HOST }}
           DATABASE_PORT=${{ secrets.DATABASE_PORT }}
@@ -35,18 +35,6 @@ jobs:
           POSTGRES_DB=${DATABASE_NAME}
           POSTGRES_HOST=${{ secrets.DATABASE_HOST }}
           EOF
-
-#        env:
-#          directory: app
-#          envkey_DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-#          envkey_DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-#          envkey_DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-#          envkey_DATABASE_USERNAME: ${{ secrets.DATABASE_USERNAME }}
-#          envkey_DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-#          envkey_POSTGRES_USER: ${{ secrets.DATABASE_USERNAME }}
-#          envkey_POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-#          envkey_POSTGRES_DB: ${{ secrets.DATABASE_HOST }}
-#          envkey_POSTGRES_PORT: ${{ secrets.DATABASE_PORT }}
 
       - name: Read .env file
         run: cat ./app/.env
