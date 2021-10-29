@@ -48,8 +48,8 @@ jobs:
 #          envkey_POSTGRES_DB: ${{ secrets.DATABASE_HOST }}
 #          envkey_POSTGRES_PORT: ${{ secrets.DATABASE_PORT }}
 
-#      - name: Create .env file
-#        run: cat ./app/.env
+      - name: Read .env file
+        run: cat ./app/.env
 
       - name: Set up Docker Buildx
         id: buildx_test
