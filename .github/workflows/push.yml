@@ -28,7 +28,6 @@ jobs:
           POSTGRES_HOST=${DATABASE_HOST}
           EOF
 
-
       - name: Set up Docker Buildx
         id: buildx_test
         uses: docker/setup-buildx-action@v1
