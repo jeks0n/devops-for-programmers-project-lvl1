@@ -1,10 +1,15 @@
-version:  '3.9'
+version:  '3.8'
 
 services:
   db:
     container_name: hexlet-db
     image: postgres:13.2-alpine
-    env_file: ./app/.env
+    environment:
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_HOST: ${DATABASE_HOST}
+      POSTGRES_PORT: ${DATABASE_PORT}
     restart: unless-stopped
     volumes:
       - pgdata:/var/lib/postgresql/data
@@ -15,8 +20,13 @@ services:
     build:
       dockerfile: Dockerfile.production
       context: .
-    env_file: ./app/.env
     command: npm test
+    environment:
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USERNAME: ${DATABASE_USERNAME}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
     restart: unless-stopped
     tty: true
 
