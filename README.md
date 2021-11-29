@@ -7,6 +7,8 @@ Make autopublish to DockerHub repository on each push event via git actions.
 
 [DockerHub Repo](https://hub.docker.com/repository/docker/jeks0n/devops-for-programmers-project-lvl1)  
 
+App: https://hexlet-project.xyz/
+
 ### Requirements
 * Docker version 20.10.8^
 * Docker-compose version 1.29.2^
